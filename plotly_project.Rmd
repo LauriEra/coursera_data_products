@@ -2,7 +2,8 @@
 title: "Plotly project"
 author: "Lauri Era"
 date: "13 december 2016"
-output: html_document
+output: ioslides_presentation 
+#html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -12,8 +13,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Plotly experimentation
 
 Let us experiment with plotly using the "cars"-dataset added with a random gaussian variable.
+Here is the code and the actual plot is on the next slide.
+```{r, eval=FALSE}
+library(plotly,warn.conflicts = F)
+cars$third <- rnorm(nrow(cars))
+cars %>% 
+    plot_ly(x=~speed,y=~dist,z=~third,type="scatter3d",
+            colors=~dist,mode="markers") 
+```
 
-```{r}
+## Plotly plot
+
+```{r, eval=TRUE, echo=FALSE}
 library(plotly,warn.conflicts = F)
 cars$third <- rnorm(nrow(cars))
 cars %>% 
